@@ -6,10 +6,11 @@
 # platform: win-64
 
 numpy
+datetime
 matplotlib
 pandas
 scipy
 seaborn
 plotly
 scikit-learn
-easygui
+os
