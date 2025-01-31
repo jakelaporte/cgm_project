@@ -10,7 +10,3 @@ datetime
 matplotlib
 pandas
 scipy
-seaborn
-plotly
-scikit-learn
-os
