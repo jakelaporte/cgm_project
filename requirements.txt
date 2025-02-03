@@ -10,3 +10,4 @@ datetime
 matplotlib
 pandas
 scipy
+seaborn
