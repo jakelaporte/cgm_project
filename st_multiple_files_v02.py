@@ -191,64 +191,65 @@ if select == options[0]:
             st.write("Click the reload button to start a new analysis.")
             st.button("Reload",on_click=clear_session)
     with tab2:
-        st.subheader("Correct a datetime.")
-        cgm_data = st.session_state['cgm_data']
-        dt_col = st.session_state['dt_col']
-        gl_col = st.session_state['gl_col']
-        dt_fmt = st.session_state['dt_fmt']
-        imported_files = st.session_state['imported_files']
-        start_date = ""
-        body = ""
-        body+=":red[The files selected in this tab should all have the same "
-        body+="structure in terms of datetime column, format and glucose "
-        body+="column. This app will change the datetime format to be "
-        body+="consistent with the requirements of this app.]\n\n"
-        body+=":blue[For example, if a datetime column only has a time, this "
-        body+="tab will help change the data to a datetime in order to "
-        body+="function with the rest of the Import function, Data Tools, and "
-        body+="Export Data.]"
-        st.markdown(body)
-        st.divider()
+        pass
+        # st.subheader("Correct a datetime.")
+        # cgm_data = st.session_state['cgm_data']
+        # dt_col = st.session_state['dt_col']
+        # gl_col = st.session_state['gl_col']
+        # dt_fmt = st.session_state['dt_fmt']
+        # imported_files = st.session_state['imported_files']
+        # start_date = ""
+        # body = ""
+        # body+=":red[The files selected in this tab should all have the same "
+        # body+="structure in terms of datetime column, format and glucose "
+        # body+="column. This app will change the datetime format to be "
+        # body+="consistent with the requirements of this app.]\n\n"
+        # body+=":blue[For example, if a datetime column only has a time, this "
+        # body+="tab will help change the data to a datetime in order to "
+        # body+="function with the rest of the Import function, Data Tools, and "
+        # body+="Export Data.]"
+        # st.markdown(body)
+        # st.divider()
 
-        if len(imported_files)==0:
-            dt_files = []
-            dt_names = []
-            imported_files = st.file_uploader('Select .csv files to change datetime.',
-                                         type='csv',
-                                         accept_multiple_files=True)
-            for imported_file in imported_files:
-                dt_files.append(imported_file.read())
-                dt_names.append(imported_file.name)
-            st.session_state['imported_files']=dt_files
-            st.session_state['imported_file_names']=dt_names
-        if len(imported_files)>0:
-            dt_files = st.session_state['imported_files']
-            dt_names = st.session_state['imported_file_names']
-            name = st.selectbox("Select a file to inspect.",
-                                index=0,
-                                options = dt_names)
-            idx = dt_names.index(name)
-            cols = st.columns(2)
-            with cols[0]:
-                st.write("Current datetime and glucose values.")
-                view_data(dt_files[idx],dt_col,gl_col,dt_fmt)
-            with cols[1]:
-                st.write("Transformed datetime:")
-                include_start_date = st.checkbox("Start Date Needed")
-                if include_start_date:
-                    start_date = st.date_input("Start Date",
-                                               format='YYYY-MM-DD')
-                    st.write("Format for YYYY-MM-DD = `%Y-%m-%d` ")
-                    if len(dt_fmt)<10:
-                        dt_fmt = '%Y-%m-%d '+dt_fmt
+        # if len(imported_files)==0:
+        #     dt_files = []
+        #     dt_names = []
+        #     imported_files = st.file_uploader('Select .csv files to change datetime.',
+        #                                  type='csv',
+        #                                  accept_multiple_files=True)
+        #     for imported_file in imported_files:
+        #         dt_files.append(imported_file.read())
+        #         dt_names.append(imported_file.name)
+        #     st.session_state['imported_files']=dt_files
+        #     st.session_state['imported_file_names']=dt_names
+        # if len(imported_files)>0:
+        #     dt_files = st.session_state['imported_files']
+        #     dt_names = st.session_state['imported_file_names']
+        #     name = st.selectbox("Select a file to inspect.",
+        #                         index=0,
+        #                         options = dt_names)
+        #     idx = dt_names.index(name)
+        #     cols = st.columns(2)
+        #     with cols[0]:
+        #         st.write("Current datetime and glucose values.")
+        #         view_data(dt_files[idx],dt_col,gl_col,dt_fmt)
+        #     with cols[1]:
+        #         st.write("Transformed datetime:")
+        #         include_start_date = st.checkbox("Start Date Needed")
+        #         if include_start_date:
+        #             start_date = st.date_input("Start Date",
+        #                                        format='YYYY-MM-DD')
+        #             st.write("Format for YYYY-MM-DD = `%Y-%m-%d` ")
+        #             if len(dt_fmt)<10:
+        #                 dt_fmt = '%Y-%m-%d '+dt_fmt
                         
-                dt_fmt=st.text_input("Change datetime format:",value=dt_fmt)
-                try:
-                    data = transform_data(dt_files[idx],dt_col,gl_col,
-                                          dt_fmt,start_date)
-                    st.write(data)
-                except:
-                    view_data(dt_files[idx],dt_col,gl_col,dt_fmt)
+        #         dt_fmt=st.text_input("Change datetime format:",value=dt_fmt)
+        #         try:
+        #             data = transform_data(dt_files[idx],dt_col,gl_col,
+        #                                   dt_fmt,start_date)
+        #             st.write(data)
+        #         except:
+        #             view_data(dt_files[idx],dt_col,gl_col,dt_fmt)
                     
             
 if select == options[1]:
