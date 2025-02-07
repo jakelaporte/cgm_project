@@ -278,7 +278,6 @@ if select == options[1]:
                               args=('selected_name','name_select'),
                               index = idx,
                               options = names)
-        st.write(name)
         
         if selection == pill_options[0]:
             with con2:
