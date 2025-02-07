@@ -307,7 +307,7 @@ if select == options[2]:
             corr = data[stats].corr()
             st.write(corr)
             fig = plt.figure()
-            sns.heatmap(corr,cmap='coolwarm')
+            sns.heatmap(corr,cmap='coolwarm',vmin=-1,vmax=1)
             st.pyplot(fig)
             st.session_state['stats'] = stats
             
