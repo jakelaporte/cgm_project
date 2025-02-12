@@ -127,7 +127,7 @@ if select == options[0]:
             st.divider()
             ## Determine rows to delete
             skip_rows = st.number_input("Number of rows to skip:",
-                                        min_value = 1,max_value = 10,
+                                        min_value = 1,max_value = 20,
                                         value="min",step=1,
                                         on_change=change_attribute,
                                         key = 'skip_key',
